@@ -1,7 +1,7 @@
-FROM node:13 as node
+FROM node:14.15.0-alpine3.12 AS node
 WORKDIR /app/apps/app
-COPY ./apps/app/package.json ./package.json
-RUN npm install
+COPY ./apps/app/*.json ./
+RUN npm ci
 COPY . ../../
 WORKDIR /app
 RUN npm i
